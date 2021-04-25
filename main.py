@@ -48,7 +48,7 @@ def handle_dialog(res, req):
 
     res['response']['buttons'] = [
         {
-            'title': 'Справка',
+            'title': 'Помощь',
             'hide': True
         }
     ]
@@ -71,7 +71,7 @@ def handle_dialog(res, req):
                     'hide': True
                 },
                 {
-                    'title': 'Справка',
+                    'title': 'Помощь',
                     'hide': True
                 }
             ]
@@ -88,7 +88,7 @@ def handle_dialog(res, req):
             elif 'нет' in req['request']['nlu']['tokens']:
                 res['response']['text'] = 'Ну и ладно!'
                 res['end_session'] = True
-            elif 'справка' in req['request']['nlu']['tokens']:
+            elif 'помощь' in req['request']['nlu']['tokens']:
                 res['response']['text'] = 'Справка об игре. Здесь нужно отгадать город по картинке и написать ' \
                                           'название в чат. А теперь ответь на предыдущее сообщение) '
                 res['end_session'] = False
@@ -104,7 +104,7 @@ def handle_dialog(res, req):
                         'hide': True
                     },
                     {
-                        'title': 'Справка',
+                        'title': 'Помощь',
                         'hide': True
                     }
                 ]
@@ -127,7 +127,7 @@ def play_game(res, req):
         res['response']['text'] = 'Тогда сыграем!'
     else:
         city = sessionStorage[user_id]['city']
-        if 'справка' in req['request']['nlu']['tokens']:
+        if 'помощь' in req['request']['nlu']['tokens']:
             res['response']['text'] = 'Справка об игре. Здесь нужно отгадать город по картинке и написать ' \
                                       'название в чат. А теперь ответь на предыдущее сообщение) '
             res['end_session'] = False
