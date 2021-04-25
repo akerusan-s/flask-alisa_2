@@ -127,6 +127,11 @@ def play_game(res, req):
         res['response']['text'] = 'Тогда сыграем!'
     else:
         city = sessionStorage[user_id]['city']
+        if 'справка' in req['request']['nlu']['tokens']:
+            res['response']['text'] = 'Справка об игре. Здесь нужно отгадать город по картинке и написать ' \
+                                      'название в чат. А теперь ответь на предыдущее сообщение) '
+            res['end_session'] = False
+            return
         if get_city(req) == city:
             res['response']['text'] = 'Правильно! Сыграем ещё?'
             sessionStorage[user_id]['guessed_cities'].append(city)
