@@ -49,7 +49,7 @@ def handle_dialog(res, req):
     res['response']['buttons'] = [
         {
             'title': 'Справка',
-            'hide': False
+            'hide': True
         }
     ]
 
@@ -72,7 +72,7 @@ def handle_dialog(res, req):
                 },
                 {
                     'title': 'Справка',
-                    'hide': False
+                    'hide': True
                 }
             ]
     else:
@@ -90,7 +90,7 @@ def handle_dialog(res, req):
                 res['end_session'] = True
             elif 'справка' in req['request']['nlu']['tokens']:
                 res['response']['text'] = 'Справка об игре. Здесь нужно отгадать город по картинке и написать ' \
-                                          'название в чат '
+                                          'название в чат. А теперь ответь на предыдущее сообщение) '
                 res['end_session'] = False
             else:
                 res['response']['text'] = 'Не поняла ответа! Так да или нет?'
@@ -105,7 +105,7 @@ def handle_dialog(res, req):
                     },
                     {
                         'title': 'Справка',
-                        'hide': False
+                        'hide': True
                     }
                 ]
         else:
