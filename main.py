@@ -61,7 +61,7 @@ def handle_dialog(res, req):
             sessionStorage[user_id]['first_name'] = first_name
             sessionStorage[user_id]['guessed_cities'] = []
             res['response']['text'] = f'Приятно познакомиться, {first_name.title()}. Я Алиса. Отгадаешь город по фото?'
-            res['response']['buttons'] += [
+            res['response']['buttons'] = [
                 {
                     'title': 'Да',
                     'hide': True
