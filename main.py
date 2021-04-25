@@ -16,6 +16,11 @@ cities = {
 sessionStorage = {}
 
 
+@app.route('/')
+def lending():
+    return """<h1>Working</h1>"""
+
+
 @app.route('/post', methods=['POST'])
 def main():
     logging.info('Request: %r', request.json)
