@@ -46,6 +46,13 @@ def handle_dialog(res, req):
         }
         return
 
+    res['response']['buttons'] = [
+        {
+            'title': 'Справка',
+            'hide': False
+        }
+    ]
+
     if sessionStorage[user_id]['first_name'] is None:
         first_name = get_first_name(req)
         if first_name is None:
@@ -54,7 +61,7 @@ def handle_dialog(res, req):
             sessionStorage[user_id]['first_name'] = first_name
             sessionStorage[user_id]['guessed_cities'] = []
             res['response']['text'] = f'Приятно познакомиться, {first_name.title()}. Я Алиса. Отгадаешь город по фото?'
-            res['response']['buttons'] = [
+            res['response']['buttons'] += [
                 {
                     'title': 'Да',
                     'hide': True
@@ -62,6 +69,10 @@ def handle_dialog(res, req):
                 {
                     'title': 'Нет',
                     'hide': True
+                },
+                {
+                    'title': 'Справка',
+                    'hide': False
                 }
             ]
     else:
@@ -91,6 +102,10 @@ def handle_dialog(res, req):
                     {
                         'title': 'Нет',
                         'hide': True
+                    },
+                    {
+                        'title': 'Справка',
+                        'hide': False
                     }
                 ]
         else:
